@@ -1,0 +1,164 @@
+@import 'variables'; // NO GUSTA
+.main__results{
+    // background: red;
+    width: 100%;
+}
+
+
+.section{
+    .header{
+        position: relative;
+        display: none;
+        // justify-content: space-between;
+        .lolo{
+            // justify-self: flex-end !important;
+            // i{
+            //     // color: red !important;
+            //     margin-right: 0 !important;
+            // }
+            // position: absolute;
+            // right: 1.5em;
+            // background: red !important;
+
+        }
+        @media screen and (min-width: $large) {
+            .lolo{
+                position: static;
+            }
+            justify-content: space-between;
+
+        }
+    }
+    
+    .main{
+        // background: red;
+        display: flex;
+        flex-wrap: wrap;
+        // align-items: flex-start;
+        align-content: flex-start;
+        padding-top: 0;
+        &__headerCrud{
+            width: 100%;
+            // background: red;
+            height: $heigh-header;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &__burguer{
+                // color:red;
+                cursor: pointer;
+                @media screen and (min-width: $large) {
+                    display: none;
+                }
+                
+            }
+
+            .lolo{
+                // background: red;
+                background-color: $verde;
+                margin: 0;
+                transition: background-color 0.5s;
+                // NO GUSTA!!!!!!
+                // text-align: center !important;
+                &:hover{
+                    background-color: rgb(3, 161, 3);
+                }
+                .icon{
+                    margin: 0 !important;
+                    @media screen and (min-width: $large) {
+                        margin-right: 0.7em !important;
+                    }
+                }
+
+                .texto{
+                    display: none;
+                    .address.book.icon{
+                    }
+                    @media screen and (min-width: $large) {
+                        margin-left: 0;
+                        display: inline;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+
+.table{
+    &__tbody{
+        &__tr{
+            &__td{
+                &--editContainer{
+                    // display: flex;
+                    // justify-content: space-around;
+                    // display: flex;
+                    // justify-content: space-between;
+
+                    &__icon{
+                        width: 3em;
+                        // height: 40px;
+                        padding: 1em;
+                        background: purple;
+                        text-align: center;
+                        // line-height: 40px;
+                        cursor: pointer;
+                        color: $backgroundColor;
+                        &--edit{
+                            // background: #2185d0; // NO GUSTA
+                            background: $azul;
+                            border-radius: 0.28571429rem;
+                        }
+
+                        &--delete{
+                            // background: tomato; // NO GUSTA
+                            background: $rojo;
+                            border-radius: 0.28571429rem;
+                        }
+
+                    }
+
+                    // &__icon.icono{
+                    //     cursor: pointer;
+                    //     // background: #e6f8fc;
+                    //     // table__tbody__tr__td--editContainer__icon
+                    //     // background: red;
+                    //     color: #00bae5;
+                    //     // width: 2.5em;
+                    //     // height: 2.5em;
+                    //     display: inline-flex;
+                    //     justify-content: center;
+                    //     align-items: center;
+                        
+                    // }
+                    // .lolo{
+                    //     // background: #ffebea;
+                    //     color:#f60f07;
+                    //     width: 30px;
+                    //     height: 30px;
+                    // }
+                }
+            }
+        }
+    }
+}
+
+// NO GUSTA
+.ui.green.submit{
+    background-color: $verde !important;
+}
+
+.ui.red.deny.button{
+    background-color: $rojo !important;
+}
+
+.ui.negative.button{
+    background-color: $rojo !important; 
+}
+
+.ui.positive.right.labeled.icon.button{
+    background-color: $verde !important;
+}

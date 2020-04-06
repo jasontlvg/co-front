@@ -1,0 +1,127 @@
+extends partials/adminLayout.pug
+//- block header
+//-     +headerTitle('Empleados')
+//-     <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i>Agregar Empleado</button>
+block main
+    .main__headerCrud
+        //- <i class="fas fa-bars main__headerCrud__burguer" id="trigger"></i>
+        //- +headerTitle('Empleados')
+        //- <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i><span class="texto">Agregar Empleado</span></button>
+    .main__results#app
+        //- <table class="ui selectable celled table">
+        //-     <thead class="table__thead">
+        //-         <tr class="table__thead__tr">
+        //-             <th class="table__thead__tr">ID</th>
+        //-             <th class="table__thead__tr">Nombre</th>
+        //-             <th class="table__thead__tr">A. Paterno</th>
+        //-             <th class="table__thead__tr">A. Materno</th>
+        //-             <th class="table__thead__tr">Cargo</th>
+        //-             <th class="table__thead__tr">Jornada</th>
+        //-             <th class="table__thead__tr">Departamento</th>
+        //-             <th class="table__thead__tr">Editar</th>
+        //-         </tr>
+        //-     </thead>
+        //-     <tbody class="table__tbody">
+        //-         <tr class="table__tbody__tr">
+        //-             <td class="table__tbody__tr__td">1</td>
+        //-             <td class="table__tbody__tr__td">Hertha</td>
+        //-             <td class="table__tbody__tr__td">Stamm</td>
+        //-             <td class="table__tbody__tr__td">Davis</td>
+        //-             <td class="table__tbody__tr__td">Storage Manager OR Distribution Manager</td>
+        //-             <td class="table__tbody__tr__td">Nocturna</td>
+        //-             <td class="table__tbody__tr__td">Biologia</td>
+        //-             <td class="table__tbody__tr__td table__tbody__tr__td--editContainer">
+        //-                 <i class="table__tbody__tr__td--editContainer__icon table__tbody__tr__td--editContainer__icon--edit   fas fa-user-edit"></i>
+        //-                 <i class="table__tbody__tr__td--editContainer__icon table__tbody__tr__td--editContainer__icon--delete fas fa-user-minus" @click="eliminar(5)"></i>
+        //-             </td>
+        //-         </tr>
+        //-     </tbody>
+        //- </table>
+        //- Modal de Confirmacion de Eliminar Usuario
+        //- <div class="ui mini test modal transition hidden eliminar">
+        //-     <div class="header">¿Esta Seguro?</div>
+        //-     <div class="content"><p>Se eliminara el elemento seleccionado permanentemente</p></div>
+        //-     <div class="actions">
+        //-     <div class="ui negative button">No</div>
+        //-     <div class="ui positive right labeled icon button">Yes<i class="checkmark icon"></i></div>
+        //-     </div>
+        //- </div>
+
+        //- Modal de Agregar Usuario
+        <div class="ui modal agregar tiny">
+            //- <i class="close icon"></i>
+            <div class="header">Editar Empleado</div>
+            <div class="image content">
+                //- form.ui.form(action="shield" method='POST')
+                form.ui.form(action="shield" method='POST')
+                    <div class="field">
+                        <label>Nombre Completo</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" name="nombre" placeholder="Nombre/s" class="inputToClean">
+                            </div>
+                            <div class="field">
+                                <input type="text" name="apaterno" placeholder="A. Paterno" class="inputToClean">
+                            </div>
+                            <div class="field">
+                                <input type="text" name="amaterno" placeholder="A. Materno" class="inputToClean">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Edad</label>
+                        <input type="number" placeholder="Coloca la Edad" name="edad" class="inputToClean">
+                    </div>
+                    <div class="field">
+                        <label>Sexo</label>
+                        select.ui.search.dropdown.selectToClear(name="sexo")
+                            <option value="">Selecciona de Sexo</option>
+                            <option value="AF">Masculino</option>
+                            <option value="AX">Femenino</option>
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Ingresa un Email" class="inputToClean">
+                    </div>
+                    <div class="field">
+                        <label>Cargo</label>
+                        select.ui.search.dropdown.selectToClear(name="cargo")
+                            <option value="">Selecciona el Cargo</option>
+                            <option value="AF">Masculino</option>
+                            <option value="AX">Femenino</option>
+                    </div>
+                    <div class="field">
+                        <label>Jornada</label>
+                        select.ui.search.dropdown.selectToClear(name="jornada")
+                            <option value="">Selecciona la Jornada</option>
+                            <option value="AF">Masculino</option>
+                            <option value="AX">Femenino</option>
+                    </div>
+                    <div class="field">
+                        <label>Escolaridad</label>
+                        select.ui.search.dropdown.selectToClear(name="escolaridad")
+                            <option value="">Selecciona la Escolaridad</option>
+                            <option value="AF">Masculino</option>
+                            <option value="AX">Femenino</option>
+                    </div>
+                    <div class="field">
+                        <label>Departamento</label>
+                        select.ui.search.dropdown.selectToClear(name="departamento")
+                            <option value="">Selecciona el Departamento</option>
+                            <option value="AF">Masculino</option>
+                            <option value="AX">Femenino</option>
+                    </div>
+                    <div class="ui yellow message errorValidacion">
+                        <div class="header">Action Forbidden</div>
+                        <p>You can only sign up for an account once with a given e-mail address.</p>
+                    </div>
+                    <div class="ui yellow message errorValidacion">
+                        <div class="header">Action Forbidden</div>
+                        <p>You can only sign up for an account once with a given e-mail address.</p>
+                    </div>
+                    <div class="actions">
+                        <div class="ui green submit button m-0">Guardar</div>
+                        <a href="www.google.com" class="ui red button ml-1">Cancelar</a>
+                    </div>
+            </div>
+        </div>

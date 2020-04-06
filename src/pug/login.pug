@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		title Bienvenido
+		<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+	body
+		.containerGrid
+			section.welcome
+				.welcome__titles
+					.logoContainer
+						h1.logoContainer__title 4P'S
+					h2.welcome__titles__h ChangeOver
+			section.login
+				.login__header
+					h2 Inicio de sesión
+				form.ui.form.login__form(action="/dsad")
+					.field
+						label Correo
+						<input type="text" name="email" placeholder="ejemplo@gmail.com" class="inpuText">
+					<span class="error-msg" role="alert">
+						<strong class="alert">  The email must be a valid email address. </strong>
+					</span>
+					.field
+						label Contraseña
+						<input type="password" name="password" placeholder="********" class="inpuText">
+					<span class="error-msg" role="alert">
+						<strong class="alert">  The email must be a valid email address. </strong>
+					</span>
+					<button class="ui button login__form__submit" type="submit">Iniciar sesión</button>
+				.login__otherUser
+					a(href="#").login__otherUser__login
+						<i class="user secret icon"></i>
+						p Administrador
+			a(href="").access
+				<i class="user secret icon"></i>
+				//- p Administrador

@@ -1,0 +1,88 @@
+@import 'partials/adminLayout';
+@import 'partials/variables';
+
+.section{
+    .main{
+        padding: 0 !important;
+    }
+    
+    .header{
+        // background-color: orangered;
+        // display: none;
+    }
+}
+
+.main__results{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $rojo;
+    flex-wrap: wrap;
+
+    &__survey{
+        // background: green;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        &__title{
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            margin-top: 0.5em;
+        }
+
+        &__iconContainer{
+            background: rgb(77, 77, 77);
+            border-radius: 50%;
+            width: 10em;
+            height: 10em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__icon{
+                font-size: 4em;
+                color: white;
+            }
+
+        }
+    }
+}
+
+.ui.horizontal.label{
+    &.green{
+        background-color: $verde !important;
+    }
+
+    &.red{
+        background-color: $rojo !important;
+    }
+}
+
+.ui.positive.right.labeled.icon.button{
+    background-color: $verde !important;
+    // transition: background-color $masterTime;
+    &:hover{
+        background-color: red !important;
+    }
+}
+
+.boxHeader{
+    width: 50%;
+    display: flex;
+
+    &__two{
+        justify-content: flex-end;
+        // background: red;
+        padding: 0.78571429em 1.5em 0.78571429em;
+        padding-right: 0;
+        
+    }
+
+}
+
+.botonDescargar{
+    background-color: $azul !important;
+    color: white !important;
+}

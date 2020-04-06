@@ -1,0 +1,62 @@
+extends partials/adminLayout.pug
+block header
+    +headerTitle('Empresa')
+block main
+    //- .contaninerForRegisterCompany
+        .imgContainer
+            img(src=require("../img/enterprise.png"), alt="")
+        .formContainer
+            <form class="ui form formPrime">
+                h2 Por favor registre los datos de la empresa
+                <div class="field">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" placeholder="Ingrese el Nombre de la Empresa">
+                </div>
+                <div class="field">
+                    <label>Giro</label>
+                    <input type="text" name="giro" placeholder="Last Name">
+                </div>
+
+                <div class="field">
+                    label Proceso
+                    select.ui.search.dropdown(name="proceso")
+                        <option value="">Seleccione un Proceso</option>
+                        <option value="Microempresa">Microempresa</option>
+                        <option value="Mediana Empresa">Mediana Empresa</option>
+                        <option value="Pequeña Empresa">Pequeña Empresa</option>
+                        <option value="Grande Empresa">Grande Empresa</option>
+                </div>
+
+                <button class="ui button" type="submit">Guardar</button>
+            </form>
+
+    .contaninerForRegistedCompany
+        .imgContainer
+            img(src=require("../img/enterprise.png"), alt="")
+        .formContainer
+            <form class="ui form formPrime">
+                h2 Datos de la empresa
+                <div class="field ready">
+                    <label>Nombre</label>
+                    h2.sub RICO B.C
+                </div>
+                <div class="field ready">
+                    label Proceso
+                    h2.sub Lorem
+                </div>
+
+                <div class="field ready">
+                    <label>Giro</label>
+                    h2.sub Mediana Empresa
+                </div>
+
+                //- <button class="ui button" type="submit">Guardar</button>
+                <div class="ui buttons">
+                    a(href="#")
+                        <div class="ui button editar">Editar</div>
+                    //- <button class="ui button orange">Editar</button>
+                    <div class="or" data-text="o"></div>
+                    a(href="#")
+                        <div class="ui button eliminar">Eliminar</div>
+                </div>
+            </form>

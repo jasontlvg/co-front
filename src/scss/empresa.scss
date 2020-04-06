@@ -1,0 +1,61 @@
+@import 'partials/adminLayout';
+
+.main{
+    // justify-content: space-between;
+}
+
+.contaninerForRegisterCompany, .contaninerForRegistedCompany{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.imgContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    img{
+        width: 40%;
+    }
+
+}
+
+.formContainer{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    // background: blue !important;
+}
+
+.formPrime{
+    width: 50%;
+    // margin-top: 8em;
+    h2{
+        // margin: 2em 0;
+    }
+
+    .field{
+        margin: 2.1em 0 !important;
+
+        &.ready{
+            margin: none !important;
+            .sub{
+                font-size: 1.5em;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.eliminar{
+    background-color: #E54C38 !important;
+    color: white !important;
+}
+
+.editar{
+    background-color: #0F7B87 !important;
+    color: white !important;
+}

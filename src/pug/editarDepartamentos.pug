@@ -1,0 +1,79 @@
+extends partials/adminLayout.pug
+//- block header
+//-     +headerTitle('Empleados')
+//-     <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i>Agregar Empleado</button>
+block main
+    //- .main__headerCrud
+        //- <i class="fas fa-bars main__headerCrud__burguer" id="trigger"></i>
+        //- +headerTitle('Departamentos')
+        //- <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i><span class="texto">Agregar Departamento</span></button>
+    //- .main__warnings
+        //- <div class="ui warning message">
+        //-     <i class="close icon"></i>
+        //-     <div class="header">You must register before you can do that!</div>
+        //- </div>
+    .main__results#app
+        //- <table class="ui selectable celled table">
+        //-     <thead class="table__thead">
+        //-         <tr class="table__thead__tr">
+        //-             <th class="table__thead__tr">ID</th>
+        //-             <th class="table__thead__tr">Nombre</th>
+        //-             <th class="table__thead__tr">Clave</th>
+        //-             <th class="table__thead__tr">Editar</th>
+        //-         </tr>
+        //-     </thead>
+        //-     <tbody class="table__tbody">
+
+        //-         -var n=0
+        //-         while n<1
+        //-             <tr class="table__tbody__tr">
+        //-                 <td class="table__tbody__tr__td">1</td>
+        //-                 <td class="table__tbody__tr__td">Hertha</td>
+        //-                 <td class="table__tbody__tr__td">Stamm</td>
+        //-                 <td class="table__tbody__tr__td table__tbody__tr__td--editContainer">
+        //-                     <i class="table__tbody__tr__td--editContainer__icon table__tbody__tr__td--editContainer__icon--edit   fas fa-edit"></i>
+        //-                     <i class="table__tbody__tr__td--editContainer__icon table__tbody__tr__td--editContainer__icon--delete fas fas fa-trash-alt " @click="eliminar(5)"></i>
+        //-                 </td>
+        //-             </tr>
+        //-             -n++
+        //-     </tbody>
+        //- </table>
+        //- Modal de Confirmacion de Eliminar Usuario
+        //- <div class="ui mini test modal transition hidden eliminar">
+        //-     <div class="header">¿Esta Seguro?</div>
+        //-     <div class="content"><p>Se eliminara el elemento seleccionado permanentemente</p></div>
+        //-     <div class="actions">
+        //-     <div class="ui negative button">Cancelar</div>
+        //-     <div class="ui positive right labeled icon button">Si<i class="checkmark icon"></i></div>
+        //-     </div>
+        //- </div>
+
+        //- Modal de Agregar Usuario
+        <div class="ui modal agregar mini">
+            //- <i class="close icon"></i>
+            <div class="header">Editar Departamento</div>
+            <div class="content">
+                //- form.ui.form(action="shield" method='POST')
+                form.ui.form(action="shield" method='POST')
+                    <div class="field">
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" placeholder="Nombre de departamento">
+                    </div>
+                    <div class="field">
+                        <label>Clave</label>
+                        <input type="password" name="clave" placeholder="Modifica la Clave">
+                    </div>
+                    <div class="ui yellow message errorValidacion">
+                        <div class="header">Action Forbidden</div>
+                        <p>You can only sign up for an account once with a given e-mail address.</p>
+                    </div>
+
+                    <div class="actions">
+                        //- button(type="submit" class="ui green button m-0") Agregar
+                        //- button(type="submit" class="ui primary submit button") Agregar
+                        <div class="ui green submit button m-0">Guardar</div>
+                        <a href="www.google.com" class="ui red button ml-1">Cancelar</a>
+                        //- <div class="ui positive right labeled icon button">Yep, that's me<i class="checkmark icon"></i></div>
+                    </div>
+            </div>
+        </div>

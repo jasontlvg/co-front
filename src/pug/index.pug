@@ -1,0 +1,95 @@
+extends partials/adminLayout.pug
+block header
+    +headerTitle('Index')
+block main
+    .container
+        .positioner.positioner--top
+            .positioner__box.positioner__box__leftColumn
+                .positioner__box__leftColumn__leftSide
+                    <i class="clipboard list icon"></i>
+                    h2.up Practica
+                .positioner__box__leftColumn__rightSide.positioner__box__leftColumn__rightSide--top
+                    <i class="info circle icon"></i>
+
+
+            .positioner__box.positioner__box__rightColumn
+                .positioner__box__rightColumn__leftSide
+                    <i class="info circle icon"></i>
+                .positioner__box__rightColumn__rightSide.positioner__box__leftColumn__rightSide--top
+                    <i class="cog icon"></i>
+                    h2 Procesos
+
+
+        .positioner.positioner--bottom
+            .positioner__box.positioner__box__leftColumn
+                .positioner__box__leftColumn__leftSide
+                    h2.down Personas
+                    <i class="users icon"></i>
+                    //- span La Media es de: 3.4739
+                    //- span La Media es de: 3.4739
+                .positioner__box__leftColumn__rightSide.positioner__box__leftColumn__rightSide--bottom
+                    <i class="info circle icon"></i>
+
+            .positioner__box.positioner__box__rightColumn
+                .positioner__box__rightColumn__leftSide
+                    <i class="info circle icon"></i>
+                .positioner__box__rightColumn__rightSide.positioner__box__leftColumn__rightSide--bottom
+                    h2.down Productos
+                    <i class="box icon"></i>
+                
+        .oval
+            .caja
+                .top
+                    img(src=require("../img/reload.png"), alt="" class="reloadimg")
+                    <i class="info circle icon"></i>
+                .bottom
+                    //- <i class="info circle icon"></i>
+                    h2 Act. de Cambio Rapido
+        //- .oval.oval__border
+
+    .lalo
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td class="cap" data-content="Add users to your feed">Jamie</td>
+                    <td>Approved</td>
+                    <td>Requires call</td>
+                </tr>
+                <tr class="active">
+                    <td>John</td>
+                    <td>Selected</td>
+                    <td>None</td>
+                </tr>
+                <tr class="coco" data-content="El tiempo dedicado al desmontaje es elevado, se requiere tomar acciones de mejora para reducirlos." data-variation="very wide">
+                    <td class="active">Jill</td>
+                    <td>Approved</td>
+                    <td>None</td>
+                </tr>
+                <tr class="coco" data-content="El tiempo dedicado al desmontaje es elevado, se requiere tomar acciones de mejora para reducirlos." data-variation="very wide">
+                    <td class="active">Jill</td>
+                    <td>Approved</td>
+                    <td>None</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        //- <div class="ui icon button" data-tooltip="Add users to your feed">
+        //-     <i class="add icon"></i>
+        //- </div>
+
+        //- <div class="ui icon button" data-tooltip="Add users to your feed">
+        //- <i class="add icon"></i>
+        //- </div>
+        //- <div class="ui icon button" data-tooltip="Add users to your feed" data-inverted="">
+        //-     <i class="add icon"></i>
+        //- </div>
+        <div class="ui icon button" data-content="Add users to your feed">
+            <i class="add icon"></i>
+        </div>

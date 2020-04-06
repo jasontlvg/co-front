@@ -1,0 +1,112 @@
+@import 'partials/variables.scss';
+.wrapper{
+    width: 100%;
+    // background: $gris;
+    // background-image: url("../img/lapiz.jpg");
+    background-size: cover;
+}
+
+.container{
+    max-width: 1030px;
+    margin: 0 auto;
+    // background: tomato;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    align-content: center;
+    .title{
+        width: 100%;
+        text-align: center;
+        // background: green;
+        margin-bottom: 3em;
+        // font-size: 3em;
+        h2{
+            font-size: 2.3em;
+        }
+    }
+    
+}
+
+.title{
+}
+
+.containerOptions{
+    width: 100%;
+    // background: blue;
+    display: flex;
+    justify-content: center;
+    &__tarjeta{
+        background: white;
+        padding: 3.6em;
+        width: 271px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        &__iconContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1em;
+            i{
+                font-size: 7em;
+                margin: 0 ;
+                margin-right: 0;
+                // overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: black;
+                transition: all 0.5s;
+                &.empleado{
+                    color: $azul;
+                }
+
+                &.admin{
+                    color: $verde;
+                }
+
+            }
+        }
+
+        &:hover{
+            // background: red;
+            transform: scale(1.1);
+            i{
+                color: white;
+            }
+            h2{
+                color: white;
+            }
+        }
+
+        &--empleado{
+            // background: red;
+            margin-right: 3em;
+            &:hover{
+                background-color: $azul;
+
+            }
+        }
+
+        &--admin{
+            &:hover{
+                background-color: $verde !important;
+
+                
+
+            }
+        }
+
+        &__titleContainer{
+            width: 100%;
+            text-align: center;
+            h2{
+                font-size: 1.9em;
+                color: black;
+
+            }
+        }
+
+        transition: all 0.5s;
+        
+    }
+    
+}

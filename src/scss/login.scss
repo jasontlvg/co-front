@@ -1,0 +1,200 @@
+@import 'partials/variables';
+
+body{
+    background-color: $backgroundColor !important;
+}
+
+.containerGrid{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    // background: tomato;
+    display: grid;
+    grid-template-rows: 1.3fr 2fr;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+        "welcome"
+        "login"
+    ;
+    @media screen and (min-width: $large) {
+        grid-template-rows: 100vh;
+        grid-template-columns: 30% 70%;
+        grid-template-areas: 
+            "welcome login"
+        ;
+        
+    }
+}
+
+.welcome{
+    grid-area: welcome;
+    background-color: $azul;
+    display: flex;
+    border-bottom-left-radius: 100px;
+    @media screen and (min-width: $large) {
+        border-bottom-left-radius: 0;
+    }
+    &__titles{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        &__h{
+            margin-top: 0.5em;
+            width: 100%;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            color: $backgroundColor;
+        }
+    }
+}
+
+.login{
+    grid-area: login;
+    // background-color: $rojo;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    @media screen and (min-width: $large) {
+        align-content: center;
+    }
+    &__header{
+        width: 100%;
+        text-align: center;
+        display: none;
+        margin-bottom: 3em;
+        @media screen and (min-width: $large) {
+            display: block;
+        }
+    }
+    &__form{
+        width: 75%;
+        margin-top: 2em;
+        @media screen and (min-width: $large) {
+            margin-top: 0;
+        }
+        &__submit{
+            width: 100%;
+            margin-top: 2em !important;
+        }
+        @media screen and (min-width: $large) {
+            width: 60%;
+        }
+
+        .inpuText{
+            
+            @media screen and (min-width: $large) {
+                height: 4em;
+            }
+        }
+        // background: green;
+    }
+    &__otherUser{
+        width: 75%;
+        display: flex;
+        // background: blue;
+        justify-content: flex-end;
+        // align-self: flex-end;
+        @media screen and (min-width: $large) {
+            display: none;
+        }
+        // align-self: flex-end !important;
+        align-items: flex-start;
+        &__login{
+            // background: red;
+            display: flex;
+            align-content: center;
+            padding: 0.5em;
+            color:$gris;
+            p{
+                margin: 0;
+            }
+            .icon{
+                margin: 0;
+                margin-right: 0.5em;
+            }
+        }
+    }
+
+}
+
+.logoContainer{
+    height: 100px;
+    width: 100px;
+    background-color: $backgroundColor;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__title{
+        font-size: 3em;
+        font-family: 'Lato', sans-serif !important;
+        margin: 0;
+        color: $azul;
+    }
+}
+
+.empleadoBackground{
+    background-color: $azul !important;
+}
+
+.empleadoColor{
+    color: $azul !important;
+
+}
+
+.adminBackground{
+    background-color: $rojo;
+}
+
+.adminColor{
+    color: $rojo !important;
+    
+}
+
+.access{
+    // width: 7em;
+    background: $rojo;
+    position: absolute;
+    // left: 98%;
+    right: 0;
+    display: flex;
+    padding: 1em;
+    align-items: center;
+    color: white;
+    opacity: 0.2;
+    transition: opacity 0.5s;
+    display: none;
+    &:hover{
+        opacity: 1;
+
+    }
+    @media screen and (min-width: $large) {
+        display: block;
+    }
+    i{
+        font-size: 1.5em;
+        color: white;
+    }
+    p{
+        font-size: 1em;
+    }
+
+    top: 50%;
+    
+}
+
+.alert{
+    color: #E54D38;
+}
+
+.error-msg{
+    margin-bottom: 1em !important;
+
+}
+
+// .field{
+//     margin: 0 !important
+// }

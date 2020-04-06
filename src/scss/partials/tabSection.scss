@@ -1,0 +1,336 @@
+
+@import 'variables.scss';
+// $masterColor: orangered;
+.main{
+
+    
+
+    &__tabSection{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 100%;
+        transition: left 0.5s;
+        background: #F2F7FA;
+        // background: red;
+
+        &__back{
+            font-size: 2.5em;
+            position: absolute;
+            // left: 0.2em;
+            // top: 0.2em;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            // background: red;
+            padding: 0 0.5em;
+            cursor: pointer;
+            color: #CACFD4;
+            transition: color 0.5s;
+
+            &:hover{
+                color: $masterColor;
+            }
+        }
+
+
+        &__titleContainer{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 3em;
+            
+            //LOGITECH
+            &--surveySection{
+                padding: 1em;
+                // background: red;
+                &__detailsContainer{
+
+                    &__button{
+                        // position: absolute;
+                        // right: 0;
+                        background-color: $verde !important;
+                        transition: background-color 0.5s !important;
+                        margin-right: 0;
+                        &:hover{
+                            background-color: rgb(7, 197, 7) !important;
+                        }
+                    }
+
+                    // background: green;
+                    position: relative;
+                    max-width: 1100px;
+                    flex: 1 1 auto; // Experimental
+                    display: flex;
+                    flex-wrap: wrap;
+                    &__detail{
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: column;
+                        justify-content: center;
+                        &__title{
+                            margin: 0;
+                            font-size: 1em;
+                        }
+
+                        &__name{
+                            font-size: 1.3em;
+                            color: $azul;
+                        }
+                        margin-right: 2em;
+
+                        &--media{
+                            &__title{
+                                // color:red;
+                            }
+
+                            &__name{
+                                // color: $verde; // AQUI ESTA EL OTRO VERDE FUERTE CHILLON CHIYON
+                                color:green;
+                                &.alert{
+                                    color: tomato;
+                                    font-weight: bold;
+                                }
+
+                            }
+                        }
+                    }
+
+
+
+                }
+                
+            }
+
+            &__title{
+                font-size: 2em
+            }
+        }
+
+        &__body{
+            width: 100%;
+            // min-height: 100%;
+            // background: red;
+            
+            &--surveysSection{
+                display: flex;
+                justify-content: center;
+                // align-items: center;
+                flex-wrap: wrap;
+                // height: 100%;
+                // background: green;
+
+                &__surveysContainer{
+                    // position: relative;
+                    width: 800px; //IMPURO ORIGINALMENTE ESTO NO ESTABA, TODO ESTABA VACIO
+                    &__survey{
+                        display: flex;
+                        width: 25em;
+                        padding: 0.5em;
+                        background-color: yellowgreen;
+                        box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+                        // background-color: #3f0d12; 
+                        // background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+                        color: white;
+                        transition: box-shadow 0.5s;
+                        margin-bottom: 1em;
+                        // padding: 0.5em;
+                        // padding: 0.5em;
+                        @media screen and (min-width: $large) {
+                            width: 40em;
+                            &:hover{
+                                box-shadow: 0px 3px 25px -2px rgba(0,0,0,0.2),0px 10px 10px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+                                // background: blue;
+                            }
+                        }
+
+                        &__icon{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            // padding: 1em;
+                            padding: 0.7em 1.8em;
+                            // background: red;
+                            color: white;
+                            // font-size: 2em;
+                            font-size: 2.5em;
+                            // flex: 3 3 auto;
+                            width: 100px;
+                            flex: 0 0 auto;
+                            @media screen and (min-width: $large) {
+                                // flex: 0.8 0.8 auto;
+                            }
+                        }
+
+                        &__description{
+                            flex: 1 1 auto;
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-content: center;
+                            // background: yellowgreen;
+                            // p{
+                            //     margin: 0%;
+                            //     padding: 0;
+                            // }
+
+                            &__title{
+                                width: 100%;
+                                // background: red;
+                                padding: 0;
+                                margin: 0;
+                                font-size: 1.5em;
+                            }
+
+                            &__status{
+                                // background-color: yellowgreen;
+                                width: 100%;
+                                margin: 0;
+                            }
+                        }
+
+                        &__control{
+                            // flex: 3 3 auto;
+                            // background: skyblue;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            &__info{
+                                font-size: 2em;
+                                color: white;
+                                cursor: pointer;
+                            }
+                            width: 100px;
+                            flex: 0 0 auto;
+                            @media screen and (min-width: $large) {
+                                // flex: 1 1 auto;
+                            }
+                        }
+
+                        &.alert{
+                            background-color: tomato;
+                        }
+                    }
+
+
+                }
+
+                &__surveysColorLegend{
+                    width: 100%;
+                    // background: red;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 2em;
+                    &__block{
+                        display: flex;
+                        &--2{
+                            margin-top: 1.3em;
+                        }
+                        &__des{
+                           
+
+                            display: flex;
+                            align-items: center;
+                            margin-left: 1em;
+                            .color-bg{
+                                width: 20px;
+                                height: 20px;
+                                background: $rojo;
+
+                                &--azul{
+                                    background-color: $azul;
+                                }
+
+                                &--amarillo{
+                                    background-color: $amarillo;
+                                }
+
+                                &--verde{
+                                    background-color: $verde;
+                                }
+
+
+                            }
+                            .description{
+                                font-size: 1em;
+                                margin: 0;
+                                margin-left: 0.5em;
+                            }
+                        }
+
+                        }
+                }
+
+
+            }
+
+            &--surveySection{
+                // background: yellowgreen;
+                display: flex;
+                justify-content: center;
+                &__table{
+                    max-width:1100px;
+                    // background: red !important;
+
+                    &__tbody{
+
+                        &__tr{
+
+                            &__td{
+
+                                &--details{
+                                    // display: flex;
+                                    // justify-content: center;
+                                    text-align: center;
+                                    // align-content: center;
+                                    // padding: 0 !important;
+                                    i{
+                                        color: $iconsColor;
+                                        cursor: pointer;
+                                        text-align: center !important;
+                                        display: flex;
+                                        justify-content: center;
+                                        @media screen and (min-width: $large) {
+                                            // width: 40em;
+                                            transition: color $masterTime;
+                                            &:hover{
+                                                color: $masterColor;
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+
+                    }
+
+                }
+            }
+
+
+        }
+
+
+        &.show{
+            left: 0 !important;
+        }
+        // z-index: 1000;
+    }
+}
+
+#tabSurvey{
+    z-index: 1000;
+}
+
+#kleenex{
+    position: relative;
+}
+
+#graficas{
+    z-index: 1100;
+}
