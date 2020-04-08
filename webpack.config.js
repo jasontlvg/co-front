@@ -80,7 +80,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({}),
         new HtmlWebpackPlugin({template: './src/pug/index.pug', filename: 'index.html',minify: false, chunks: ['index']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
-        new HtmlWebpackPlugin({template: './src/pug/results.pug', filename: 'results.html',minify: false, chunks: ['results']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
+        new HtmlWebpackPlugin({template: './src/pug/results.pug', filename: 'results.html',minify: false, chunks: ['results'],alwaysWriteToDisk: true}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/empleados.pug', filename: 'empleados.html',minify: false, chunks: ['empleados']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/departamentos.pug', filename: 'departamentos.html',minify: false, chunks: ['departamentos']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/editarEmpleados.pug', filename: 'editarEmpleados.html',minify: false, chunks: ['editarEmpleados']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado

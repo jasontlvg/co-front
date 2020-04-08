@@ -5,7 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    justify-content: center;    
     // align-items: center;
     // background: blue;
     width: 11em;
@@ -74,26 +74,6 @@
     }
 }
 
-// .main{
-//     display: block !important;
-//     // align-items: center;
-//     background: red;
-//     // overflow: auto !important;
-//     overflow: hidden !important;
-
-// }
-
-// .container{
-//     width: 800px;
-//     // height: 500px;
-//     // background-color: skyblue;
-//     margin: 0 auto;
-//     margin-top: 3em;
-//     // display: flex;
-//     // flex-wrap: wrap;
-//     position: relative;
-
-// }
 
 .positioner{
     width: 100%;
@@ -170,24 +150,7 @@
 
 }
 
-// .oval{
-//     width: 600px;
-//     height: 600px;
-//     // background: #E44C37;
-//     background: skyblue;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%,-50%);
-//     clip-path: ellipse(23% 15% at 50% 50%);
-//     z-index: 100;
-//     &__border{
-//         width: 650px;
-//         height: 650px;
-//         background: #F2F7FA;
-//         z-index: 50;
-//     }
-// }
+
 
 .oval{
     background: $azul;
@@ -214,20 +177,12 @@
     }
     
 
-    // Clip
-    // clip-path: ellipse(23% 15% at 50% 50%);
-    // width: 600px;
-    // height: 600px;
-
     // Border Radius
     width: 320px;
     height: 210px;
     border-radius: 50%;
     border: 10px solid #F2F7FA;
 
-    // &.alert{
-    //     background: $rojo;
-    // }
 
     @include colors-bg();
 

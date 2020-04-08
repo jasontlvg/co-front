@@ -6,24 +6,13 @@
 
         <div class="main__body">
             <ul class="main__body__listContainer">
-                <li v-for="dep in departamentos" class="main__body__listContainer__li" @click="selectedDep(dep, $event)">{{dep.nombre}}</li>
+                <!-- <li v-for="dep in departamentos" class="main__body__listContainer__li" @click="selectedDep(dep, $event)">{{dep.nombre}}</li> -->
+                <li v-bind:key="index" v-for="(dep,index) in departamentos" class="main__body__listContainer__li" @click="selectedDep(dep, $event)">{{dep.nombre}}</li>
             </ul>
             <!-- <button >Aplastar</button> -->
             <button class="ui right labeled icon button disabled main__button" id="nextMain" @click="nextPage">
                 <i class="right arrow icon"></i>Siguiente
             </button>
-
-            <!-- <div class="ui icon button" data-tooltip="Add users to your feed" data-inverted="">
-                <i class="add icon"></i>
-            </div>
-            <div class="ui icon" data-tooltip="Add users to your feed" data-inverted="">
-                <p>hola</p>
-            </div>
-            <div class="ui button" data-inverted="" data-tooltip="Add users to your feed" data-position="top left">Top Left</div> -->
-            
-            <!-- <div class="ui icon button" data-content="Add users to your feed">
-                <i class="add icon"></i>
-            </div> -->
         </div>
 
 
@@ -37,28 +26,6 @@
 
             <!-- Estandar -->
             <div class="main__tabSection__body main__tabSection__body--surveysSection">
-
-                <!-- <div class="main__tabSection__body--surveysSection__surveysContainer">
-                    <div v-for="(survey, index) in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey" v-bind:class="{alert:promediosGlobales[survey.encuesta_id]<3 || encuestaMenor == promediosGlobales[survey.encuesta_id]}">
-
-                        <i v-if="survey.encuesta.nombre == 'Personas'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
-                        <i v-else-if="survey.encuesta.nombre == 'Producto'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-truck-loading"></i>
-                        <i v-else-if="survey.encuesta.nombre == 'Act. Cambio Rápido'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-share-square"></i>
-                        <i v-else-if="survey.encuesta.nombre == 'Procesos'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fas fa-hat-wizard"></i>
-                        <i v-else-if="survey.encuesta.nombre == 'Practica'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fas fa-clipboard-list"></i>
-                        <i v-else class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fas fa-poo-storm"></i>
-                        
-                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__description">
-                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__title">{{survey.encuesta.nombre}}</p>
-                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status" v-bind:class="{calafiero:encuestaMenor == promediosGlobales[survey.encuesta_id]}">La Media es de: {{promediosGlobales[survey.encuesta_id]}}</p>
-                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__flags" v-bind:class="{calafiero:encuestaMenor == promediosGlobales[survey.encuesta_id]}">Indicadores: {{flags[index]}}</p>
-                        </div>
-                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
-                            <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info" @click="nextPage($event,survey.encuesta_id,index)"></i>
-                        </div>
-
-                    </div>
-                </div> -->
 
                 <div class="main__tabSection__body--surveysSection__surveysContainer" id="kleenex">
                     <!-- pollo -->
@@ -245,13 +212,6 @@
 
             <!-- Estandar -->
             <div class="main__tabSection__body main__tabSection__body--surveySection">
-                <!-- <p v-for="x in preguntasEncuestaSeleccionado">{{x.pregunta}}</p> -->
-                <!-- <div v-for="(x,index) in preguntasEncuestaSeleccionado">
-                    <span>{{x.pregunta}}</span>
-                    <p>{{respuestasEncuestaSeleccionada[index]}}</p>
-                </div> -->
-
-                <!-- <table class="ui celled table main__tabSection__body main__tabSection__body--surveySection__table" style="max-width:900px"> -->
                 <table class="ui celled selectable table main__tabSection__body main__tabSection__body--surveySection__table">
                     <thead>
                         <tr>
@@ -274,9 +234,6 @@
                                 </a>
                                 <!-- {{promedioDePreguntasDeEncuestaSeleccionada[index]}} -->
                             </td>
-
-                            <!-- <td data-label="Job">{{respuestasEncuestaSeleccionada[index]}}</td> -->
-                            <!-- <td data-label="Job" @click="modal(respuestasEncuestaSeleccionada[index])">{{respuestasEncuestaSeleccionada[index]}}</td> -->
                             <td data-label="Details" @click="modal(respuestasEncuestaSeleccionada[index],((index+1) + '. ' +x.pregunta))" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td--details" ><i class="fas fa-info-circle"></i></td>
                             
                         </tr>
@@ -304,18 +261,6 @@
                 </div>
 
             </div>
-
-            <!-- <form action="http://geministorm.com/admin/resultados/reporte" method="get">
-                <div class="invisible">
-                    <input v-for="dep in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">
-                    <input type="text" name="departamento" :value="departamentoSeleccionado.nombre">
-                    <input type="text" name="encuesta_id" :value="encuestaIdSeleccionado">
-                    <input type="text" name="encuesta" :value="encuestaSeleccionada.nombre">
-                    <input type="text" name="media" :value="promediosGlobales[encuestaIdSeleccionado]">
-                    
-                </div>
-                <button type="submit">Descargar reporte</button>
-            </form> -->
 
         </section>
         
@@ -351,6 +296,7 @@
                 lolo: ['uno', 'dos'],
                 indicadorMasAlto: -10,
                 minus: 2.9999,
+                debug: []
             }
         },
         created: function(){
@@ -420,7 +366,14 @@
                     // handle success
                     // console.log(response.data);
                     //Aqui obtenemos los resultados, ya nos retornan los resultados, y los resultados filtrados (ademas de las encuestas disponibles)
-                    console.dir(response)
+
+                    //Debug
+                    console.log(response.data)
+                    este.debug= response.data
+                     
+                     
+                    // DEbug-------------------------- 
+                    // No borrar
                     este.resultados= response.data;
 
                     let encuestasDisponibles= este.resultados[0];
@@ -523,10 +476,12 @@
                 let este=this;
                 let containerParent= event.srcElement.offsetParent;
                 if(containerParent.classList[0] == 'main'){
+                    console.log('la pagina de las encuestas')
                     // console.dir(containerParent.children[2].classList.toggle('show'))
                     containerParent.children[2].classList.toggle('show')
                     this.getData()
                 }else{
+                    console.log('pagina de detalles')
                     let nextPage= document.getElementById('tabSurvey');
 
 
