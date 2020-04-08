@@ -86,6 +86,21 @@ export const store = new Vuex.Store({
         },
         getDataForDetalles(state){
             return state.dataForDetalles
+        },
+        getEncuestaSeleccionada(state){
+            return state.encuestaSeleccionada
+        },
+        getEncuestaIdSeleccionado(state){
+            return state.encuestaIdSeleccionado
+        },
+        getPromedioDePreguntasDeEncuestaSeleccionada(state){
+            return state.promedioDePreguntasDeEncuestaSeleccionada
+        },
+        getPreguntasEncuestaSeleccionado(state){
+            return state.preguntasEncuestaSeleccionado
+        },
+        getIndicadores(state){
+            return state.indicadores
         }
 
 
@@ -179,8 +194,6 @@ export const store = new Vuex.Store({
         setIndicadores(state, data){
             state.indicadores=data
         }
-        
-        
 
     },
     actions: {
