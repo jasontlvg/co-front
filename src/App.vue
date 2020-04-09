@@ -3,7 +3,9 @@
         <!-- <router-link :to="{ name: 'inicio' }">INICIO</router-link>
         <router-link :to="{ name: 'dashboard' }">INICIO</router-link> -->
         <!-- <p>{{actualView}}</p> -->
-        <div class="ui steps">
+
+
+        <!-- <div class="ui steps">
             <div class="step">
                 <i class="building outline icon" :class="{ selectedView: actualView=='departamento' }"></i>
                 <div class="content">
@@ -32,6 +34,50 @@
                     <div class="description" :class="{ selectedView: actualView=='detalles' }">Seleccione una encuesta</div>
                 </div>
             </div>
+        </div> -->
+
+
+
+        <div class="ui steps">
+            <!-- <router-link :to="{ name: 'dashboard' }">INICIO</router-link> -->
+            <router-link v-for="(step, index) in steps" :to="{ name: step.to }" class="step" :class="{ active: step.active, disabled: step.disabled}" :key="index">
+                <i class="icon" :class="step.icon"></i>
+                <div class="content">
+                <div class="title">{{step.title}}</div>
+                <div class="description">Seleccione un departamento</div>
+                </div>
+            </router-link>
+
+            <!-- <a class="step">
+                <i class="building outline icon"></i>
+                <div class="content">
+                <div class="title">Dashboard</div>
+                <div class="description">Seleccione una encuesta</div>
+                </div>
+            </a> -->
+            
+            <!-- <router-link :to="{ name: 'dashboard' }" class="step">
+                <i class="building outline icon"></i>
+                <div class="content">
+                <div class="title">Dashboard</div>
+                <div class="description">Seleccione una encuesta</div>
+                </div>
+            </router-link> 
+            
+            <router-link :to="{ name: 'encuesta' }" class="step">
+                <div class="content">
+                <div class="title">Encuestas</div>
+                <div class="description">Seleccione una encuesta</div>
+                </div>
+            </router-link> 
+            
+            <router-link :to="{ name: 'detalles' }" class="step">
+                <div class="content">
+                <div class="title">Detalles</div>
+                <div class="description">Seleccione una encuesta</div>
+                </div>
+            </router-link>  -->
+
         </div>
         <router-view></router-view>
     </div>
@@ -43,15 +89,20 @@ export default {
     name: 'App',
     created(){
         
+        
     },
     data(){
         return {
-            welcome: 'Bienvenido'
+            welcome: 'Bienvenido',
+            arr: [1,2,3,4]
         }
     },
     computed: {
         actualView(){
             return this.$store.getters.getActualView
+        },
+        steps(){
+            return this.$store.getters.getSteps
         }
         
     },

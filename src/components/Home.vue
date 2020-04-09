@@ -28,7 +28,10 @@
 export default {
     name: 'Home',
     created(){
+        this.$store.commit('completeReset')
+
         this.$store.commit('setActualView', 'departamento')
+        this.$store.commit('updateStepsStatus', 0)
 
         let este=this
         this.$store.dispatch('getDepartamentos')

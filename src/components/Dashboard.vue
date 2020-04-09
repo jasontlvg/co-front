@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard">
-        {{resultados}}
+        <!-- {{resultados}} -->
         <div class="dashboard__wrapper">
             <div class="card-container" >
                 <div class="card-container__card" :key="index" v-for="(encuesta, index) in encuestas">
@@ -56,30 +56,33 @@ export default {
     created(){
         
         this.$store.commit('setActualView','dashboard')
+        // this.$store.commit('setStepActive', { index: 1, status: true })
+        this.$store.commit('updateStepsStatus', 1)
+
 
         let este= this
         // Reactivar todo lo de abajo y despues comentar el 'encuestas' de data
-        // this.$store.dispatch('getDashboard')
-        // .then( data => {
-        //     console.log(data)
-        //     este.$store.commit('setDashboardData',data)
-        // })
-        // .catch( data => {
-        //     console.log('error funcionando correctamente')
-        // })
+        this.$store.dispatch('getDashboard')
+        .then( data => {
+            // console.log(data)
+            este.$store.commit('setDashboardData',data)
+        })
+        .catch( data => {
+            console.log('error funcionando correctamente')
+        })
         
     },
     data(){
         return {
             welcome: 'Bienvenido',
-            encuestas: [ { "encuesta": 1, "turno_1": true, "turno_2": true, "enTurno2": true }, { "encuesta": 2, "turno_1": true, "turno_2": false, "enTurno2": false } ],
+            // encuestas: [ { "encuesta": 1, "turno_1": true, "turno_2": true, "enTurno2": true }, { "encuesta": 2, "turno_1": true, "turno_2": false, "enTurno2": false } ],
             // resultados: [ [ { "encuesta_id": 1, "encuesta": { "id": 1, "nombre": "Personas", "created_at": "2019-08-03 06:04:02", "updated_at": "2019-08-03 06:04:02" } }, { "encuesta_id": 2, "encuesta": { "id": 2, "nombre": "Producto", "created_at": "2019-08-03 06:04:15", "updated_at": "2019-08-03 06:04:15" } }, { "encuesta_id": 3, "encuesta": { "id": 3, "nombre": "Act. Cambio Rápido", "created_at": "2019-08-03 06:04:46", "updated_at": "2019-08-03 06:04:46" } }, { "encuesta_id": 4, "encuesta": { "id": 4, "nombre": "Procesos", "created_at": "2019-08-03 06:05:25", "updated_at": "2019-08-03 06:05:25" } }, { "encuesta_id": 5, "encuesta": { "id": 5, "nombre": "Practica", "created_at": "2019-08-03 06:05:42", "updated_at": "2019-08-03 06:05:42" } } ], { "1": [ [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ] ], "2": [ [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ] ], "3": [ [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ] ], "4": [ [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ] ], "5": [ [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ], [ 0, 0, 0, 0, 0, 2 ] ] }, { "1": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], "2": [ 1, 1, 1, 1, 1, 1, 1 ], "3": [ 1, 1, 1, 1, 1, 1, 1, 1 ], "4": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], "5": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ] } ]
         }
     },
     computed: {
-        // encuestas(){
-        //     return this.$store.getters.getDashboardData.encuestas
-        // },
+        encuestas(){
+            return this.$store.getters.getDashboardData.encuestas
+        },
         resultados(){
             return this.$store.getters.getResultados
         },
@@ -203,7 +206,7 @@ export default {
             .catch( response => {
                 console.log(response)
             })
-            }
+        },
         
     }
 }
@@ -237,7 +240,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        // background: blue;
+        background: rgba(255, 255, 255, 0.8);
         padding: 1em;
         box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
     }

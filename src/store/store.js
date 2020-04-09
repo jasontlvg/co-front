@@ -20,7 +20,6 @@ export const store = new Vuex.Store({
         encuestaMenor: 0,
         flags: [],
         preguntaActual: '',
-        // Para el Diseño Imp
         practica: [],
         procesos: [],
         personas: [],
@@ -33,7 +32,41 @@ export const store = new Vuex.Store({
         actualView:'',
         dashboardData: {},
         dashboardDataForGoToEncuestas: {encuesta: 0, turno: 0},
-        dataForDetalles: {}
+        dataForDetalles: {},
+        steps: [
+            {
+                to: 'inicio', 
+                active: false, 
+                disabled: false, 
+                title: 'Departamento', 
+                description: 'Seleccione un departamento',
+                icon: 'building outline'
+            },
+            {
+                to: 'dashboard', 
+                active: false, 
+                disabled: true, 
+                title: 'Dashboard', 
+                description: 'Seleccione una encuesta',
+                icon: 'sticky note outline'
+            },
+            {
+                to: 'encuesta', 
+                active: false, 
+                disabled: true, 
+                title: 'Encuestas', 
+                description: 'Seleccione una encuesta',
+                icon: 'clipboard outline'
+            },
+            {
+                to: 'detalles', 
+                active: false, 
+                disabled: true, 
+                title: 'Detalles', 
+                description: 'Seleccione una encuesta',
+                icon: 'chart bar'
+            }
+        ]
     },
     getters: {
         getDepartamentos(state) {
@@ -101,6 +134,18 @@ export const store = new Vuex.Store({
         },
         getIndicadores(state){
             return state.indicadores
+        },
+        getRespuestasEncuestaSeleccionada(state){
+            return state.respuestasEncuestaSeleccionada
+        },
+        getPreguntaActual(state){
+            return state.preguntaActual
+        },
+        getRespuestasDePreguntas(state){
+            return state.respuestasDePreguntas
+        },
+        getSteps(state){
+            return state.steps
         }
 
 
@@ -193,6 +238,56 @@ export const store = new Vuex.Store({
         },
         setIndicadores(state, data){
             state.indicadores=data
+        },
+        setPreguntaActual(state, pregunta){
+            state.preguntaActual= pregunta
+        },
+        setStepActive(state, data){
+            state.steps[data.index].active= data.status
+        },
+        updateStepsStatus(state, index){
+            state.steps[index].active= true
+            state.steps[index].disabled= false
+            // Update de disabled
+            for(let i=index+1; i<state.steps.length; i++){
+                console.log(state.steps[i])
+                state.steps[i].disabled=true
+            }
+            // Update de active
+            for(let j=0; j<state.steps.length; j++){
+                if(j!=index){
+                    state.steps[j].active=false
+                }
+            }
+        },
+
+        completeReset(state){
+            state.departamentos= []
+            state.departamentoSeleccionado= {}
+            state.resultados= {}
+            state.promediosGlobales= []
+            state.encuestaIdSeleccionado= -1
+            state.preguntasEncuestaSeleccionado= []
+            state.respuestasEncuestaSeleccionada= []
+            state.promedioDePreguntasDeEncuestaSeleccionada= []
+            state.respuestasDePreguntas= []
+            state.encuestaSeleccionada= {}
+            state.encuestaMenor= 0
+            state.flags= [],
+            state.preguntaActual= ''
+            state.practica= []
+            state.procesos= []
+            state.personas= []
+            state.producto= []
+            state.acr= []
+            state.indicadores= ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',],
+            state.lolo= ['uno', 'dos']
+            state.indicadorMasAlto= -10
+            state.minus= 2.9999
+            state.actualView=''
+            state.dashboardData= {}
+            state.dashboardDataForGoToEncuestas= {encuesta: 0, turno: 0}
+            state.dataForDetalles= {}
         }
 
     },
@@ -260,8 +355,8 @@ export const store = new Vuex.Store({
             // console.log(context.getters.getDepartamentoSeleccionado.id)
             let este= this
             return new Promise((resolve, reject) => {
-                // axios.get(`api/getdata/${context.getters.getDepartamentoSeleccionado.id}/${params.encuesta}/${params.turno}`)
-                axios.get(`api/getdata/1/${params.encuesta}/${params.turno}`) // debug comenta este y descomenta el de arriba para produccion
+                axios.get(`api/getdata/${context.getters.getDepartamentoSeleccionado.id}/${params.encuesta}/${params.turno}`)
+                // axios.get(`api/getdata/1/${params.encuesta}/${params.turno}`) // debug comenta este y descomenta el de arriba para produccion
                     .then(function (response) {
                         // console.log(response.data);
                         resolve(response)
@@ -300,7 +395,7 @@ export const store = new Vuex.Store({
             return new Promise((resolve, reject) => {
                 axios.get(`api/indicadores/${context.getters.getDataForDetalles.encuestaId}`) // debug comenta este y descomenta el de arriba para produccion
                     .then(function (response) {
-                        console.log(response.data);
+                        // console.log(response.data);
                         resolve(response.data)
                     })
                     .catch(function (error) {

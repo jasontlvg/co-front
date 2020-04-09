@@ -161,6 +161,7 @@ export default {
     name: 'Encuesta',
     created(){
         this.$store.commit('setActualView', 'encuestas')
+        this.$store.commit('updateStepsStatus', 2)
     },
     data(){
         return {
@@ -207,9 +208,9 @@ export default {
         nextPage(encuestaId, index){
             // console.log(encuestaId)
             if(encuestaId==undefined || index==undefined){
-                console.log('No disponible')
+                // console.log('No disponible')
             }else{
-                console.log(index + " " + encuestaId)
+                // console.log(index + " " + encuestaId)
                 this.$store.commit('setDataForDetalles', { encuestaId: encuestaId, index })
                 this.$router.push({name:'detalles'})
             }
