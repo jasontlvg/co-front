@@ -5,18 +5,32 @@
 
             <div class="detalles__wrapper__title-container">
                 <!-- <button class="boton" @click="checkForModal">Check</button> -->
-                <form class="detalles__wrapper__title-container__form" action="./resultados/reporte" method="get">
-                    <!-- {{departamentoSeleccionado.nombre}} -->
-                    <div class="invisible">
-                        <input :key="index" v-for="(dep,index) in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">
-                        <input type="text" name="departamento" :value="departamentoSeleccionado.nombre">
-                        <input type="text" name="encuesta_id" :value="encuestaIdSeleccionado">
-                        <input type="text" name="encuesta" :value="encuestaSeleccionada.nombre">
-                        <input type="text" name="media" :value="promediosGlobales[encuestaIdSeleccionado]">
-                        
+                <div class="detalles__wrapper__title-container__wrapper">
+                    <div class="detalles__wrapper__title-container__media-container">
+                        <div class="ui labeled button" tabindex="0">
+                            <div class="ui primary button">
+                                <i class="chess icon"></i>Media
+                            </div>
+                            <div class="ui basic primary left pointing label">
+                                {{promediosGlobales[encuestaIdSeleccionado]}}
+                            </div>
+                        </div>
                     </div>
-                    <button class="ui primary button detalles__wrapper__title-container__form__download-button" type="submit">Descargar reporte</button>
-                </form>
+                    <form class="detalles__wrapper__title-container__form" action="./resultados/reporte" method="get">
+                        <!-- {{departamentoSeleccionado.nombre}} -->
+                        <div class="invisible">
+                            <input :key="index" v-for="(dep,index) in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">
+                            <input type="text" name="departamento" :value="departamentoSeleccionado.nombre">
+                            <input type="text" name="encuesta_id" :value="encuestaIdSeleccionado">
+                            <input type="text" name="encuesta" :value="encuestaSeleccionada.nombre">
+                            <input type="text" name="media" :value="promediosGlobales[encuestaIdSeleccionado]">
+                            
+                        </div>
+                        <button class="ui primary button detalles__wrapper__title-container__form__download-button" type="submit">Descargar reporte</button>
+                    </form>
+
+                </div>
+
                 <!-- <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>minus}" >Reactivar Encuesta</button> -->
             </div>
 
@@ -30,10 +44,20 @@
                                 <th>Ver Detalles</th>
                             </tr>
                         </thead>
-                        <tbody class="detalles__wrapper__table-container__table__tbody">
+                        <tbody v-if="renderBody" class="detalles__wrapper__table-container__table__tbody">
                             <tr v-for="(x,index) in preguntasEncuestaSeleccionado" class="detalles__wrapper__table-container__table__tbody__tr" :key="x[0]">
-                                <td class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td--pregunta" v-if="promedioDePreguntasDeEncuestaSeleccionada[index]>minus" data-label="Name">{{(index+1)+ '. ' +x.pregunta}}</td>
-                                <td class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td--pregunta" v-else :data-tooltip="indicadores[index].indicador" data-inverted="" data-label="Name">{{(index+1)+ '. ' +x.pregunta}}</td>
+                                <td class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td--pregunta" v-if="promedioDePreguntasDeEncuestaSeleccionada[index]>minus" data-label="Name">
+                                    <p>{{(index+1)+ '. ' +x.pregunta}}</p>
+                                </td>
+                                <td class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td--pregunta" v-else data-label="Name">
+                                    <p>{{(index+1)+ '. ' +x.pregunta}}</p>
+                                    <p class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td__recomendacion">Recomendacion: {{indicadores[index].indicador}}</p>
+                                </td>
+                                
+                                <!-- <td class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td--pregunta" v-else :data-tooltip="indicadores[index].indicador" data-inverted="" data-label="Name">{{(index+1)+ '. ' +x.pregunta}}</td> -->
+                                
+                                
+                                
                                 <td class="detalles__wrapper__table-container__table__tbody__tr__td detalles__wrapper__table-container__table__tbody__tr__td--media" data-label="Media" style="text-align:center">
                                     <a class="item">
                                         <div class="ui horizontal label" :class="{green: promedioDePreguntasDeEncuestaSeleccionada[index]>minus, red:promedioDePreguntasDeEncuestaSeleccionada[index]<=minus}" >{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</div>
@@ -125,7 +149,7 @@ export default {
         encuestaId(){
             return this.$store.getters.getDataForDetalles.encuestaId
         },
-        index(){
+        indexFromStore(){
             return this.$store.getters.getDataForDetalles.index
         },
         resultados(){
@@ -150,11 +174,12 @@ export default {
         promedioDePreguntasDeEncuestaSeleccionada(){
             return this.$store.getters.getPromedioDePreguntasDeEncuestaSeleccionada
         },
+        indicadores(){
+            // console.log(this.$store.getters.getIndicadores)
+            return this.$store.getters.getIndicadores
+        },
         preguntasEncuestaSeleccionado(){
             return this.$store.getters.getPreguntasEncuestaSeleccionado
-        },
-        indicadores(){
-            return this.$store.getters.getIndicadores
         },
         respuestasEncuestaSeleccionada(){
             return this.$store.getters.getRespuestasEncuestaSeleccionada
@@ -164,23 +189,38 @@ export default {
         },
         preguntaActual(){
             return this.$store.getters.getPreguntaActual
+        },
+
+        renderBody(){
+            return this.$store.getters.getPreguntasEncuestaSeleccionado.length == this.$store.getters.getIndicadores.length
         }
 
 
     },
     methods: {
         getData(){
+
+            this.$store.dispatch('getIndicadores')
+            .then( response => {
+                this.$store.commit('setIndicadores', response)
+                // console.log('Indicadores: ')
+                // console.log(response)
+            })
+            .catch( error => {
+                console.log(error)
+            })
+            
+            // console.log('preguntasEncuestaSeleccionado antes del dispatch: ')
+            // console.log(this.$store.getters.getPreguntasEncuestaSeleccionado)
+
             this.$store.dispatch('getPreguntas')
             .then( response => {
-                // este.preguntasEncuestaSeleccionado= response.data;
                 this.$store.commit('setPreguntasEncuestaSeleccionado', response.data)
+                // console.log('preguntasEncuestaSeleccionado despues del dispatch:')
+                // console.log(response.data)
+                this.$store.commit('setEncuestaSeleccionada', this.resultados[0][this.indexFromStore].encuesta)
+                this.$store.commit('setDescriptionStep', { index: 2, description: this.resultados[0][this.indexFromStore].encuesta.nombre })
 
-                // este.encuestaSeleccionada= este.resultados[0][index].encuesta;
-                // console.log(this.resultados[0][this.index].encuesta)
-                this.$store.commit('setEncuestaSeleccionada', this.resultados[0][this.index].encuesta)
-
-
-                // este.respuestasEncuestaSeleccionada= este.resultados[1][encuestaId]
                 this.$store.commit('setRespuestasEncuestaSeleccionada', this.resultados[1][this.encuestaId])
 
 
@@ -191,20 +231,14 @@ export default {
                 console.log(error)
             })
 
-            this.$store.dispatch('getIndicadores')
-            .then( response => {
-                this.$store.commit('setIndicadores', response)
-            })
-            .catch( error => {
-                console.log(error)
-            })
+            
         },
 
         modal(arr,pregunta){
             $('.ui.modal').modal('show');
             this.$store.commit('setPreguntaActual', pregunta)
             if(window.chart != undefined){
-                console.log('Destruyendo')
+                // console.log('Destruyendo')
                 window.chart.destroy()
             }else{
                 // console.log('es la primera')
@@ -269,11 +303,11 @@ export default {
             let modal= $('.modals')
             // console.log(modal.length)
             if(modal.length==1){
-                console.log('Eliminando')
+                // console.log('Eliminando')
                 modal.remove();
-                console.log(modal)
+                // console.log(modal)
             }else{
-                console.log('no existe')
+                // console.log('no existe')
             }
         }
         
@@ -296,13 +330,22 @@ export default {
         margin-bottom: 2em;
         &__title-container{
             width: 100%;
-            // background: blue;
-            &__form{
+            margin-bottom: 1em;
+
+            &__wrapper{
                 max-width: 1070px;
                 margin: 0 auto;
                 display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            // el &__form en el html esta dentro del &__wrapper
+            &__form{
+                display: flex;
                 justify-content: flex-end;
-                padding-bottom: 1em;
+                // padding-bottom: 1em;
+                align-items: center;
+                background: red;
                 &__download-button{
                     margin: 0;
                 }
@@ -320,6 +363,11 @@ export default {
                     &__tr{
 
                         &__td{
+                            &__recomendacion{
+                                color: rgb(173, 124, 0);
+                                font-weight: bold;
+
+                            }
                             &--pregunta{
 
                             }

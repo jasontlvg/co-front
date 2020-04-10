@@ -44,7 +44,7 @@
                 <i class="icon" :class="step.icon"></i>
                 <div class="content">
                 <div class="title">{{step.title}}</div>
-                <div class="description">Seleccione un departamento</div>
+                <div class="description step__description">{{step.description}}</div>
                 </div>
             </router-link>
 
@@ -79,7 +79,7 @@
             </router-link>  -->
 
         </div>
-        <router-view></router-view>
+        <router-view class="router-view"></router-view>
     </div>
     
 </template>
@@ -114,6 +114,10 @@ export default {
 
 <style lang="scss" scoped>
 
+*{
+    // box-sizing: border-box !important;
+}
+
 .app{
     width: 100% !important;
     height: 100vh;
@@ -125,6 +129,28 @@ export default {
 
 .selectedView{
     color: #1678C2 !important;
+}
+
+.ui.steps{
+    width: 100% !important;
+    // display: flex;
+    // flex-wrap: wrap !important;
+    .step{
+        // width: 500px !important;
+        // flex: 0 0 0;
+        // background-color: red !important;
+        // &:nth-child(odd){
+        //     background: blue;
+        // }
+        &__description{
+            // background: red;
+            width: 180px;
+        }
+    }
+}
+
+.router-view{
+    width: 100%;
 }
 
 </style>

@@ -28,7 +28,13 @@
 export default {
     name: 'Home',
     created(){
-        this.$store.commit('completeReset')
+        
+        // console.log(this.$store.getters.getActualView.length)
+        if(this.$store.getters.getActualView){
+            this.$store.commit('completeReset')
+        }
+
+        this.$store.commit('setDescriptionStep', {index: 0, description: 'Seleccione un departamento'})
 
         this.$store.commit('setActualView', 'departamento')
         this.$store.commit('updateStepsStatus', 0)
@@ -70,6 +76,7 @@ export default {
     methods: {
         selectedDep: function(dep,event){
             this.$store.commit('setDepartamentoSeleccionado',dep)
+            this.$store.commit('setDescriptionStep', { index: 0, description: this.$store.getters.getDepartamentoSeleccionado.nombre })
             let listOfDepartments=document.getElementsByClassName("main__body__listContainer__li");
             for(let dep of listOfDepartments){
                 dep.classList.remove('selected')

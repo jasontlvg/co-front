@@ -54,6 +54,9 @@
 export default {
     name: 'Dashboard',
     created(){
+        this.$store.commit('setDescriptionStep', {index: 1, description: 'Seleccione el turno'})
+
+        this.$store.commit('parcialReset')
         
         this.$store.commit('setActualView','dashboard')
         // this.$store.commit('setStepActive', { index: 1, status: true })
@@ -200,6 +203,9 @@ export default {
 
                 // este.indicadorMasAlto= Math.max(...este.flags);
                 this.$store.commit('setIndicadorMasAlto', Math.max(...este.flags))
+
+
+                this.setDashboardDescription()    
                 this.$router.push({ name: 'encuesta' })
 
             })
@@ -207,6 +213,13 @@ export default {
                 console.log(response)
             })
         },
+
+        setDashboardDescription(){
+            // console.log(this.$store.getters.getDashboardDataForGoToEncuestas)
+            let data= this.$store.getters.getDashboardDataForGoToEncuestas
+            let message= `Encuesta ${data.encuesta} - ` + (data.turno==1 ? 'First Survey' : 'Retroalimentacion')
+            this.$store.commit('setDescriptionStep', {index: 1, description: message})
+        }
         
     }
 }

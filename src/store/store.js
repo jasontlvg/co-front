@@ -63,7 +63,7 @@ export const store = new Vuex.Store({
                 active: false, 
                 disabled: true, 
                 title: 'Detalles', 
-                description: 'Seleccione una encuesta',
+                description: '',
                 icon: 'chart bar'
             }
         ]
@@ -147,8 +147,6 @@ export const store = new Vuex.Store({
         getSteps(state){
             return state.steps
         }
-
-
     },
     mutations: {
         setDepartamentos(state, departamentos) {
@@ -250,7 +248,7 @@ export const store = new Vuex.Store({
             state.steps[index].disabled= false
             // Update de disabled
             for(let i=index+1; i<state.steps.length; i++){
-                console.log(state.steps[i])
+                // console.log(state.steps[i])
                 state.steps[i].disabled=true
             }
             // Update de active
@@ -280,15 +278,52 @@ export const store = new Vuex.Store({
             state.personas= []
             state.producto= []
             state.acr= []
-            state.indicadores= ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',],
+            state.indicadores= ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',]
             state.lolo= ['uno', 'dos']
             state.indicadorMasAlto= -10
             state.minus= 2.9999
-            state.actualView=''
+            state.actualView= ''
             state.dashboardData= {}
             state.dashboardDataForGoToEncuestas= {encuesta: 0, turno: 0}
             state.dataForDetalles= {}
+        },
+
+        parcialReset(state){
+            // state.departamentos= []
+            // state.departamentoSeleccionado= {}
+            state.resultados= {}
+            state.promediosGlobales= []
+            state.encuestaIdSeleccionado= -1
+            state.preguntasEncuestaSeleccionado= []
+            state.respuestasEncuestaSeleccionada= []
+            state.promedioDePreguntasDeEncuestaSeleccionada= []
+            // state.respuestasDePreguntas= []
+            state.encuestaSeleccionada= {}
+            state.encuestaMenor= 0
+            state.flags= [],
+            state.preguntaActual= ''
+            state.practica= []
+            state.procesos= []
+            state.personas= []
+            state.producto= []
+            state.acr= []
+            state.indicadores= ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',]
+            state.lolo= ['uno', 'dos']
+            state.indicadorMasAlto= -10
+            state.minus= 2.9999
+            // state.actualView= ''
+            // state.dashboardData= {}
+            state.dashboardDataForGoToEncuestas= {encuesta: 0, turno: 0}
+            state.dataForDetalles= {}
+        },
+
+        setDescriptionStep(state, data){
+            // console.log(state.steps[data.index].description)
+            state.steps[data.index].description= data.description
+            // console.log(state.steps[0].description)
         }
+
+        
 
     },
     actions: {

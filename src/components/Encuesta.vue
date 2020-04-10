@@ -160,6 +160,7 @@
 export default {
     name: 'Encuesta',
     created(){
+        this.$store.commit('setDescriptionStep', { index: 2, description: 'Seleccione una encuesta' })
         this.$store.commit('setActualView', 'encuestas')
         this.$store.commit('updateStepsStatus', 2)
     },
@@ -215,7 +216,8 @@ export default {
                 this.$router.push({name:'detalles'})
             }
             
-        }
+        },
+        
         
     }
 }
