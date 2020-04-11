@@ -43,8 +43,8 @@
             <router-link v-for="(step, index) in steps" :to="{ name: step.to }" class="step" :class="{ active: step.active, disabled: step.disabled}" :key="index">
                 <i class="icon" :class="step.icon"></i>
                 <div class="content">
-                <div class="title">{{step.title}}</div>
-                <div class="description step__description">{{step.description}}</div>
+                    <div class="title">{{step.title}}</div>
+                    <div class="description step__description">{{step.description}}</div>
                 </div>
             </router-link>
 

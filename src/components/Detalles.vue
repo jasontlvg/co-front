@@ -24,7 +24,6 @@
                             <input type="text" name="encuesta_id" :value="encuestaIdSeleccionado">
                             <input type="text" name="encuesta" :value="encuestaSeleccionada.nombre">
                             <input type="text" name="media" :value="promediosGlobales[encuestaIdSeleccionado]">
-                            
                         </div>
                         <button class="ui primary button detalles__wrapper__title-container__form__download-button" type="submit">Descargar reporte</button>
                     </form>
@@ -345,7 +344,7 @@ export default {
                 justify-content: flex-end;
                 // padding-bottom: 1em;
                 align-items: center;
-                background: red;
+                // background: red;
                 &__download-button{
                     margin: 0;
                 }

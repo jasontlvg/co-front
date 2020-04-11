@@ -1,5 +1,5 @@
-import Swal from 'sweetalert2'
-window.Swal= Swal;
+// import Swal from 'sweetalert2'
+// window.Swal= Swal;
 // Frameworks e Icons
 const fontawesome= require('./scss/fontawesome/css/all.scss');
 const semantic= require('./scss/semantic/semantic.scss');

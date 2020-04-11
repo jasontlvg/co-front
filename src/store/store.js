@@ -321,6 +321,17 @@ export const store = new Vuex.Store({
             // console.log(state.steps[data.index].description)
             state.steps[data.index].description= data.description
             // console.log(state.steps[0].description)
+        },
+
+        enTurno2Activate(state, index){
+            state.dashboardData.encuestas[index].enTurno2=true
+            state.dashboardData.encuestas[index].turno_1=true
+        },
+
+        addNewSurvey(state, data){
+            // state.dashboardData.encuestas[]
+            // console.log(state.dashboardData.encuestas.length+1)
+            state.dashboardData.encuestas.push({ "encuesta": state.dashboardData.encuestas.length+1, "turno_1": false, "turno_2": false, "enTurno2": false })
         }
 
         
@@ -391,13 +402,12 @@ export const store = new Vuex.Store({
             let este= this
             return new Promise((resolve, reject) => {
                 axios.get(`api/getdata/${context.getters.getDepartamentoSeleccionado.id}/${params.encuesta}/${params.turno}`)
-                // axios.get(`api/getdata/1/${params.encuesta}/${params.turno}`) // debug comenta este y descomenta el de arriba para produccion
                     .then(function (response) {
-                        // console.log(response.data);
+                        console.dir(response.data);
                         resolve(response)
                     })
                     .catch(function (error) {
-                        // console.log(error);
+                        console.log('en el server se genero un error');
                         reject(error.response)
                     })
                     .then(function () {
@@ -408,9 +418,8 @@ export const store = new Vuex.Store({
         },
 
         getPreguntas(context){
-            // console.log(context.getters.getDataForDetalles.encuestaId)
             return new Promise((resolve, reject) => {
-                axios.get(`api/results/encuesta/preguntas/${context.getters.getDataForDetalles.encuestaId}`) // debug comenta este y descomenta el de arriba para produccion
+                axios.get(`api/results/encuesta/preguntas/${context.getters.getDataForDetalles.encuestaId}`)
                     .then(function (response) {
                         // console.log(response.data);
                         resolve(response)
@@ -428,7 +437,7 @@ export const store = new Vuex.Store({
 
         getIndicadores(context){
             return new Promise((resolve, reject) => {
-                axios.get(`api/indicadores/${context.getters.getDataForDetalles.encuestaId}`) // debug comenta este y descomenta el de arriba para produccion
+                axios.get(`api/indicadores/${context.getters.getDataForDetalles.encuestaId}`)
                     .then(function (response) {
                         // console.log(response.data);
                         resolve(response.data)
@@ -441,8 +450,43 @@ export const store = new Vuex.Store({
                         // always executed
                     });
             })
+        },
 
+        activateFeedbackSurvey(context){
+            return new Promise((resolve, reject) => {
+                axios.post('api/activate/feedback', {
+                    departamento_id: context.getters.getDepartamentoSeleccionado.id, //debug
+                    // departamento_id: 1, // debug
+                  })
+                  .then(function (response) {
+                    // console.log(response.data);
+                    resolve(response.data)
+                  })
+                  .catch(function (error) {
+                    // console.log(error);
+                    reject(error.response)
+                  });
+            })
+        },
+
+        tryToActivateNewSurvey(context){
+            return new Promise((resolve, reject) => {
+                axios.post('api/activate/survey', {
+                    departamento_id: context.getters.getDepartamentoSeleccionado.id, //debug
+                    // departamento_id: 1, // debug
+                  })
+                  .then(function (response) {
+                    // console.log(response.data);
+                    resolve(response.data)
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                    reject(error.response)
+                  });
+            })
+            
         }
+
 
 
 
