@@ -300,7 +300,7 @@ export default {
                 // console.log(this.departamentoSeleccionado)
                 this.$store.dispatch('tryToActivateNewSurvey')
                 .then(data=>{
-                    console.log(data)
+                    // console.log(data)
                     if(data==1){
                         this.$store.commit('addNewSurvey', 1)
                         Swal.fire({

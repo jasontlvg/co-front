@@ -18,16 +18,25 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: Dashboard,
+    meta: {
+      requiresData: true,
+    }
   },
   {
     path: '/encuesta',
     name: 'encuesta',
     component: Encuesta,
+    meta: {
+      requiresData: true,
+    }
   },
   {
     path: '/detalles',
     name: 'detalles',
     component: Detalles,
+    meta: {
+      requiresData: true,
+    }
   }
   
 ]

@@ -1,6 +1,7 @@
 // import Swal from 'sweetalert2'
 // window.Swal= Swal;
 // Frameworks e Icons
+console.log('Version: v3.0')
 const fontawesome= require('./scss/fontawesome/css/all.scss');
 const semantic= require('./scss/semantic/semantic.scss');
 const semanticjs=require('./js/semantic');
@@ -41,6 +42,22 @@ import App from './App.vue'
 const router = new VueRouter({
   routes,
   // mode: 'history'
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresData)) {
+    if (store.getters.getActualView == '') {
+      next({
+        name: 'inicio',
+      })
+    } else {
+      next()
+    }
+
+  }
+  else {
+    next()
+  }
 })
 
 /* eslint-disable no-new */

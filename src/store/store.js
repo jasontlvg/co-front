@@ -248,7 +248,6 @@ export const store = new Vuex.Store({
             state.steps[index].disabled= false
             // Update de disabled
             for(let i=index+1; i<state.steps.length; i++){
-                // console.log(state.steps[i])
                 state.steps[i].disabled=true
             }
             // Update de active
@@ -403,7 +402,7 @@ export const store = new Vuex.Store({
             return new Promise((resolve, reject) => {
                 axios.get(`api/getdata/${context.getters.getDepartamentoSeleccionado.id}/${params.encuesta}/${params.turno}`)
                     .then(function (response) {
-                        console.dir(response.data);
+                        // console.dir(response.data);
                         resolve(response)
                     })
                     .catch(function (error) {
