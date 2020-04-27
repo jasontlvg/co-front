@@ -4,6 +4,8 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 axios.defaults.baseURL = 'http://co-laravel.com/admin/'
+// axios.defaults.baseURL = 'http://changeover4ps.xyz/admin/'
+// axios.defaults.baseURL = 'http://starforce.xyz/admin/'
 
 export const store = new Vuex.Store({
     state: {
@@ -483,11 +485,6 @@ export const store = new Vuex.Store({
                     reject(error.response)
                   });
             })
-            
         }
-
-
-
-
     }
 })

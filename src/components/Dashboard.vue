@@ -4,15 +4,15 @@
         <div class="dashboard__wrapper">
             <div class="dashboard__wrapper__header">
                 <!-- {{activateNewSurveyButton}} -->
-                <button @click="activateNewSurvey" class="ui green button" :class="{ disabled: !activateNewSurveyButton, loading: loading}">Nueva encuesta</button>
+                <button @click="activateNewSurvey" class="ui green button" :class="{ disabled: !activateNewSurveyButton || loading, loading: loading}">Nueva encuesta</button>
             </div>
             <div class="card-container" >
                 <div class="card-container__card" :key="index" v-for="(encuesta, index) in encuestas">
-                    <div class="card-container__title">Encuesta {{index+1}}</div>
-                    <div class="card-container__buttons-container">
+                    <div class="card-container__card__title">Encuesta {{index+1}}</div>
+                    <div class="card-container__card__buttons-container">
 
                         <div class="ui animated button" @click="goToEncuestas(index+1, 1)" tabindex="0">
-                        <div class="visible content">Encuesta</div>
+                            <div class="visible content">Encuesta</div>
                             <div class="hidden content">
                                 <i class="book icon"></i>
                             </div>
@@ -20,7 +20,7 @@
                         
                         <!-- <div class="ui animated button" v-if="encuesta.enTurno2" :class="{ disabled: !encuesta.turno_1 }" tabindex="0"> -->
                         <div class="ui animated button" @click="goToEncuestas(index+1, 2)" v-if="encuesta.enTurno2" :class="{ disabled: !encuesta.turno_1 }" tabindex="0">
-                        <div class="visible content">Retroalimentacion</div>
+                            <div class="visible content">Retroalimentacion</div>
                             <div class="hidden content">
                                 <i class="sync icon"></i>
                             </div>
@@ -28,18 +28,32 @@
                         
                         <!-- <div class="ui animated button" v-if="!encuesta.enTurno2" :class="{ disabled: !(encuesta.turno_1 && encuesta.turno_2) }" tabindex="0"> -->
                         <div class="ui animated button" v-if="!encuesta.enTurno2" @click="feedbackSurveyActivate(index+1)">
-                        <div class="visible content">Activar retroalimentacion</div>
+                            <div class="visible content">Activar retroalimentacion</div>
                             <div class="hidden content">
                                 <i class="book icon"></i>
                             </div>
                         </div>
                         
-                        <div class="ui animated button"  v-if="encuesta.enTurno2" :class="{ disabled: !(encuesta.turno_1 && encuesta.turno_2) }" tabindex="0">
-                        <div class="visible content">Reporte Final</div>
+                        <!-- <div class="ui animated button"  v-if="encuesta.enTurno2" :class="{ disabled: !(encuesta.turno_1 && encuesta.turno_2) }" tabindex="0">
+                            <div class="visible content">Reporte Final</div>
                             <div class="hidden content">
                                 <i class="book icon"></i>
                             </div>
-                        </div>
+                        </div> -->
+
+                        <form v-if="encuesta.enTurno2" class="card-container__buttons-container__form" action="http://co-laravel.com/admin/resultados/reportefinal" method="get">
+                            <div class="invisible">
+                                <input type="text" name="departamento_id" :value="departamentoSeleccionado.id">
+                                <input type="text" name="departamento_name" :value="departamentoSeleccionado.nombre">
+                                <input type="text" name="encuesta" :value="index+1">
+                            </div>                            
+                            <button type="submit" class="ui animated button" :class="{ disabled: !(encuesta.turno_1 && encuesta.turno_2) }" tabindex="0">
+                                <div class="visible content">Reporte Final</div>
+                                <div class="hidden content">
+                                    <i class="book icon"></i>
+                                </div>
+                            </button>
+                        </form>
                         
 
                     </div>
@@ -120,6 +134,12 @@ export default {
         
     },
     methods: {
+
+        getReporteFinal(encuesta){
+            encuesta++;
+            console.log('Encuesta numero: '+ encuesta)
+            
+        },
 
         goToEncuestas(encuesta,turno){
             // console.log(`${encuesta} ${turno}`)
@@ -298,6 +318,7 @@ export default {
 
             activateNewSurvey(){
                 // console.log(this.departamentoSeleccionado)
+                this.loading=true
                 this.$store.dispatch('tryToActivateNewSurvey')
                 .then(data=>{
                     // console.log(data)
@@ -310,10 +331,18 @@ export default {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                    }else{
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Activando encuesta, porfavor recargue la pagina',
+                        })
                     }
+                    this.loading=false
                     // este.$store.commit('setDepartamentos',data)
                 })
                 .catch(data=>{
+                    this.loading=false
                     console.log('error')
                 })
             }
@@ -361,8 +390,15 @@ export default {
         background: rgba(255, 255, 255, 0.8);
         padding: 1em;
         box-shadow:0 0 2px rgba(0, 0, 0, 0.5);
+        &__buttons-container{
+            display: flex;
+        }
     }
     
+}
+
+.invisible{
+    display: none;
 }
 
 </style>

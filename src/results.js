@@ -1,7 +1,7 @@
 // import Swal from 'sweetalert2'
 // window.Swal= Swal;
 // Frameworks e Icons
-console.log('Version: v3.0')
+console.log('Version: v3.3')
 const fontawesome= require('./scss/fontawesome/css/all.scss');
 const semantic= require('./scss/semantic/semantic.scss');
 const semanticjs=require('./js/semantic');
@@ -18,7 +18,7 @@ const styles= require('./scss/results.scss');
 // Axios -- Comenta el codigo especial si vas a trabajas desde VSC, descomentalo cuando lo pases al server
 
 // window.raiz='./';
-window.raiz='http://co-laravel.com/admin/';
+// window.raiz='http://co-laravel.com/admin/';
 
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
