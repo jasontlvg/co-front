@@ -16,8 +16,8 @@
                             </div>
                         </div>
                     </div>
-                    <form class="detalles__wrapper__title-container__form" action="http://co-laravel.com/admin/resultados/reporte" method="get">
-                    <!-- <form class="detalles__wrapper__title-container__form" action="./resultados/reporte" method="get"> -->
+                    <!-- <form class="detalles__wrapper__title-container__form" action="http://co-laravel.com/admin/resultados/reporte" method="get"> -->
+                    <form class="detalles__wrapper__title-container__form" action="./resultados/reporte" method="get">
                         <!-- {{departamentoSeleccionado.nombre}} -->
                         <div class="invisible">
                             <input :key="index" v-for="(dep,index) in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">

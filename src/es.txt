@@ -1,0 +1,31 @@
+{
+    results: 
+    // Un elemento por encuesta, existen dos encuestas, la Primera y la de retroalimentacion
+    // por lo tanto se obtendra un arreglo de 2 elementos, el turno 1 y turno 2
+    [
+        media: 1.5,
+        departamento: "Automatizacion",
+        encuestaMenor: {},
+        encuestas: [
+            // Un objeto por encuesta, osea 5 objetos
+            {
+                nombre: 'Personas',
+                media: 3.5,
+                indicadores: [
+                    // Un objeto por indicador
+                    {
+                        variable: {}
+                        recomendacion: {}
+                        media: 1.0
+                    }
+                ]
+            }
+        ],
+        encuesta: "Primera encuesta" || "Encuesta de retroalimentacion"
+    ],
+    mediaGlobal: 1.25
+}
+
+
+
+

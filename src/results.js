@@ -1,7 +1,7 @@
 // import Swal from 'sweetalert2'
 // window.Swal= Swal;
 // Frameworks e Icons
-console.log('Version: v3.3')
+console.log('Version: v3.61');
 const fontawesome= require('./scss/fontawesome/css/all.scss');
 const semantic= require('./scss/semantic/semantic.scss');
 const semanticjs=require('./js/semantic');
@@ -53,7 +53,6 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-
   }
   else {
     next()

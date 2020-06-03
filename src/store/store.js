@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
-axios.defaults.baseURL = 'http://co-laravel.com/admin/'
-// axios.defaults.baseURL = 'http://changeover4ps.xyz/admin/'
+// axios.defaults.baseURL = 'http://co-laravel.com/admin/'
+axios.defaults.baseURL = 'http://changeover4ps.xyz/admin/'
 // axios.defaults.baseURL = 'http://starforce.xyz/admin/'
 
 export const store = new Vuex.Store({
@@ -30,7 +30,8 @@ export const store = new Vuex.Store({
         indicadores: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',],
         lolo: ['uno', 'dos'],
         indicadorMasAlto: -10,
-        minus: 2.9999,
+        // minus: 2.9999,
+        minus: 3,
         actualView:'',
         dashboardData: {},
         dashboardDataForGoToEncuestas: {encuesta: 0, turno: 0},
@@ -282,7 +283,8 @@ export const store = new Vuex.Store({
             state.indicadores= ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',]
             state.lolo= ['uno', 'dos']
             state.indicadorMasAlto= -10
-            state.minus= 2.9999
+            // state.minus= 2.9999
+            state.minus= 3
             state.actualView= ''
             state.dashboardData= {}
             state.dashboardDataForGoToEncuestas= {encuesta: 0, turno: 0}
@@ -311,7 +313,8 @@ export const store = new Vuex.Store({
             state.indicadores= ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',]
             state.lolo= ['uno', 'dos']
             state.indicadorMasAlto= -10
-            state.minus= 2.9999
+            // state.minus= 2.9999
+            state.minus= 3
             // state.actualView= ''
             // state.dashboardData= {}
             state.dashboardDataForGoToEncuestas= {encuesta: 0, turno: 0}

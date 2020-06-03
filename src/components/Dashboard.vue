@@ -41,7 +41,8 @@
                             </div>
                         </div> -->
 
-                        <form v-if="encuesta.enTurno2" class="card-container__buttons-container__form" action="http://co-laravel.com/admin/resultados/reportefinal" method="get">
+                        <form v-if="encuesta.enTurno2" class="card-container__buttons-container__form" action="./admin/resultados/reportefinal" method="get">
+                        <!-- <form v-if="encuesta.enTurno2" class="card-container__buttons-container__form" action="http://co-laravel.com/admin/resultados/reportefinal" method="get"> -->
                             <div class="invisible">
                                 <input type="text" name="departamento_id" :value="departamentoSeleccionado.id">
                                 <input type="text" name="departamento_name" :value="departamentoSeleccionado.nombre">
